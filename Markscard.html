@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <title> Document</title>
+        <script type="text/javascript">
+            var total=0;
+            var Percentage=0;
+            var jJ=false;
+            var jA=false;
+            var jW=false;
+            
+            function doTotal()
+            {
+                if(jJ==false || jA==false|| jW==false)
+			{
+				alert("Fill Valid Data Ist");
+				return;
+			}
+                var mj=document.getElementById("txtJava").value;
+                var ma=document.getElementById("txtAnd").value;
+                var mw=document.getElementById("txtWeb").value;
+                
+		var backs="";
+		if(mj<50)
+			backs="Java";
+		if(ma<50)
+			backs=backs+",Android";
+		if(mw<50)
+			backs=backs+",Web Dev";
+		
+		document.getElementById("txtLogs").value=backs;
+                		
+		if(backs=="")
+		{
+		 	total=parseFloat(mj)+parseFloat(ma)+parseFloat(mw);
+			document.getElementById("txtTotal").value=total;
+			document.getElementById("btnPer").disabled=false;
+		}
+            }
+            function doPer()
+            {
+                Per=total*100/300;
+                document.getElementById("txtPer").value=Per;
+                document.getElementById("btnRes").disabled=false;
+            }
+            function doRes()
+            {
+                if(Per>=50)
+                    document.getElementById("txtRes").value="pass";
+                else
+                document.getElementById("txtRes").value="Fail";    
+            }
+            function chkJava()
+            {
+                var mj=document.getElementById("txtJava").value;
+                if(mj=="")
+                    {
+                        jJ=false;
+                    document.getElementById("errJava").innerHTML="fill the marks of Java";
+                        document.getElementById("txtJava").innerHTML.style.backgroundcolor="red";
+                    }
+                else
+                {
+                    jJ=true;
+                     document.getElementById("errJava").innerHTML="Ok";
+                        document.getElementById("txtJava").innerHTML.style.backgroundcolor="white";
+                    
+                }
+            }
+            function chkAnd()
+            {
+                var ctrl=document.getElementById("txtAnd");
+                if(ctrl.value=="")
+                    {
+                        jA=false;
+				document.getElementById("errAnd").innerHTML="Fill The marks of Android";
+			}
+		else
+		{
+			jA=true;
+			document.getElementById("errAnd").innerHTML="Ok";
+		}       
+            }
+            function chkWeb()
+            {
+                var ctrl=document.getElementById("txtWeb");
+                if(ctrl.value=="")
+                    {
+                        jW=false;
+				document.getElementById("errWeb").innerHTML="Fill The marks of Web Development";
+			}
+		else
+		{
+			jW=true;
+			document.getElementById("errWeb").innerHTML="Ok";
+		}       
+            }
+            
+            
+        </script>
+    </head>
+    <body>
+        <center>
+		<form action="">
+			<table width="500">
+				<tr>
+					<td colspan="2">
+						<center>
+							<h2>Marks Card Assignment</h2>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>Java</td>
+					<td><input type="text" id="txtJava"  onblur="chkJava();">
+					
+						<span id="errJava">*</span>
+					</td>
+				</tr>
+           <tr>
+					<td>Android</td>
+					<td><input type="text" id="txtAnd"  onblur="chkAnd();">
+					
+						<span id="errAnd">*</span>
+					</td>
+				</tr>
+              <tr>
+					<td>Web Development</td>
+					<td><input type="text" id="txtWeb"  onblur="chkWeb();">
+					
+						<span id="errWeb">*</span>
+					</td>
+				</tr>
+          <tr>
+              <td colspan="2"> 
+              <input type="button" value="Total Marks" onclick="doTotal();">
+               <input type="button"  id ="btnPer" disabled value="Percentage" onclick="doPer();">
+                <input type="button" id="btnRes" disabled value="Result(Pass/Fail)" onclick="doRes();">
+                <input type="Reset">
+              </td>
+          </tr>
+          <tr>
+              <td> Total Marks</td>
+              <td><input type="text" id="txtTotal" readonly> </td>
+          </tr>
+           <tr>
+              <td> Percentage</td>
+              <td><input type="text" id="txtPer" readonly> </td>
+          </tr>
+          <tr>
+              <td> Result</td>
+              <td><input type="text" id="txtRes"readonly> </td>
+          </tr>
+           <tr>
+              <td> Backlogs</td>
+              <td><input type="text" id="txtLogs" readonly> </td>
+          </tr>
+          
+           
+            </table>
+            </form>
+        </center>
+        
+        
+    </body>
+</html>
+                
+                
+                
+            
+  
